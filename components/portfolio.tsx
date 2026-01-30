@@ -12,7 +12,7 @@ const projects = [
     company: "Belsoft Systems",
     description:
       "A comprehensive web application for managing rental properties, including tenant management, payment tracking, and maintenance requests.",
-    image: "https://picsum.photos/200/300?grayscale",
+    image: "https://picsum.photos/600/400?grayscale",
     technologies: ["React.js", "Node.js", "MongoDB", "Express"],
     category: "web",
     links: {
@@ -26,7 +26,7 @@ const projects = [
     company: "Brentex Petroleum",
     description:
       "A secure document management system for storing, organizing, and retrieving company documents with role-based access control.",
-    image: "https://picsum.photos/200/300?grayscale",
+    image: "https://picsum.photos/600/400?grayscale",
     technologies: ["Python", "Django", "PostgreSQL", "AWS S3"],
     category: "web",
     links: {
@@ -40,7 +40,7 @@ const projects = [
     company: "Freelance Project",
     description:
       "An automated system for tracking inventory levels, orders, and deliveries with real-time alerts and reporting.",
-    image: "https://picsum.photos/200/300?grayscale",
+    image: "https://picsum.photos/600/400?grayscale",
     technologies: ["Python", "Flask", "SQLite", "React"],
     category: "automation",
     links: {
@@ -54,7 +54,7 @@ const projects = [
     company: "Wellman & Wellington",
     description:
       "Enhanced website security and implemented modern UI features for improved user experience and protection against common web vulnerabilities.",
-    image: "https://picsum.photos/200/300?grayscale",
+    image: "https://picsum.photos/600/400?grayscale",
     technologies: ["JavaScript", "React", "CSS3"],
     category: "security",
     links: {
@@ -118,7 +118,7 @@ export default function Portfolio() {
               <Card className="glass-card overflow-hidden h-full limelight">
                 <div className="relative h-48 overflow-hidden">
                   <img
-                    src={project.image || "/placeholder.svg"}
+                    src={project.image || "https://picsum.photos/600/400?grayscale"}
                     alt={project.title}
                     className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
                   />

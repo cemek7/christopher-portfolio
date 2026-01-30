@@ -12,7 +12,7 @@ const projects = [
     company: "Belsoft Systems",
     description:
       "A comprehensive web application for managing rental properties, including tenant management, payment tracking, and maintenance requests.",
-    image: "/placeholder.svg?height=400&width=600",
+    image: "https://placehold.co/600x400",
     technologies: ["React.js", "Node.js", "MongoDB", "Express"],
     category: "web",
     links: {
@@ -26,7 +26,7 @@ const projects = [
     company: "Brentex Petroleum",
     description:
       "A secure document management system for storing, organizing, and retrieving company documents with role-based access control.",
-    image: "/placeholder.svg?height=400&width=600",
+    image: "https://placehold.co/600x400",
     technologies: ["Python", "Django", "PostgreSQL", "AWS S3"],
     category: "web",
     links: {
@@ -40,7 +40,7 @@ const projects = [
     company: "Freelance Project",
     description:
       "An automated system for tracking inventory levels, orders, and deliveries with real-time alerts and reporting.",
-    image: "/placeholder.svg?height=400&width=600",
+    image: "https://placehold.co/600x400",
     technologies: ["Python", "Flask", "SQLite", "React"],
     category: "automation",
     links: {
@@ -54,7 +54,7 @@ const projects = [
     company: "Wellman & Wellington",
     description:
       "Enhanced website security and implemented modern UI features for improved user experience and protection against common web vulnerabilities.",
-    image: "/placeholder.svg?height=400&width=600",
+    image: "https://placehold.co/600x400",
     technologies: ["JavaScript", "React", "OWASP", "CSS3"],
     category: "security",
     links: {

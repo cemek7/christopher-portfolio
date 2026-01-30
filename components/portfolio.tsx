@@ -118,7 +118,7 @@ export default function Portfolio() {
               <Card className="glass-card overflow-hidden h-full limelight">
                 <div className="relative h-48 overflow-hidden">
                   <img
-                    src={project.image || "https://picsum.photos/600/400?grayscale"}
+                    src={project.image || "https://picsum.photos/600/400?grayscale&random=1"  || "https://picsum.photos/600/400?grayscale&random=2"}
                     alt={project.title}
                     className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
                   />

@@ -1,91 +1,63 @@
 "use client"
 
-import { useState, useEffect } from "react"
-import { Button } from "@/components/ui/button"
-import { MoonIcon, SunIcon, MenuIcon, XIcon } from "lucide-react"
-import { useTheme } from "next-themes"
+import { useState } from "react"
+import { Menu, X } from "lucide-react"
 
 const navItems = [
-  { name: "Home", href: "#home" },
-  { name: "About", href: "#about" },
-  { name: "Skills", href: "#skills" },
-  { name: "Experience", href: "#experience" },
-  { name: "Certifications", href: "#certifications" },
-  { name: "Portfolio", href: "#portfolio" },
-  { name: "Contact", href: "#contact" },
+  { label: "Work", href: "#work" },
+  { label: "What I build", href: "#capabilities" },
+  { label: "About", href: "#about" },
+  { label: "Contact", href: "#contact" },
 ]
 
 export default function Navbar() {
-  const [isScrolled, setIsScrolled] = useState(false)
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-  const { theme, setTheme } = useTheme()
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10)
-    }
-    window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
-
-  const toggleTheme = () => {
-    setTheme(theme === "dark" ? "light" : "dark")
-  }
+  const [menuOpen, setMenuOpen] = useState(false)
 
   return (
-    <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? "bg-background/80 backdrop-blur-md shadow-md" : "bg-transparent"
-      }`}
-    >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center py-4">
-          <a href="#home" className="text-xl font-bold">
-            Christopher Ozougwu
-          </a>
+    <header className="sticky top-0 z-50 border-b border-[#d9ded4] bg-[#f4f3eb]/95 backdrop-blur">
+      <div className="mx-auto flex min-h-[76px] max-w-7xl items-center justify-between px-5 sm:px-8 lg:px-12">
+        <a href="#home" className="group leading-tight" aria-label="Christopher Ozougwu, home">
+          <span className="block text-sm font-semibold tracking-[0.04em] text-[#13221b]">CHRISTOPHER OZOUGWU</span>
+          <span className="mt-1 block font-mono text-[0.62rem] uppercase tracking-[0.2em] text-[#087f5b]">TechClave · Product & AI</span>
+        </a>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-6">
-            {navItems.map((item) => (
-              <a key={item.name} href={item.href} className="text-sm font-medium hover:text-primary transition-colors">
-                {item.name}
-              </a>
-            ))}
-            <Button variant="ghost" size="icon" onClick={toggleTheme}>
-              {theme === "dark" ? <SunIcon className="h-5 w-5" /> : <MoonIcon className="h-5 w-5" />}
-            </Button>
-          </nav>
+        <nav aria-label="Main navigation" className="hidden items-center gap-8 md:flex">
+          {navItems.map((item) => (
+            <a key={item.href} href={item.href} className="text-sm text-[#53635a] transition-colors hover:text-[#087f5b]">
+              {item.label}
+            </a>
+          ))}
+          <a href="#contact" className="button-nav">Let’s talk</a>
+        </nav>
 
-          {/* Mobile Navigation Toggle */}
-          <div className="flex items-center md:hidden">
-            <Button variant="ghost" size="icon" onClick={toggleTheme} className="mr-2">
-              {theme === "dark" ? <SunIcon className="h-5 w-5" /> : <MoonIcon className="h-5 w-5" />}
-            </Button>
-            <Button variant="ghost" size="icon" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
-              {mobileMenuOpen ? <XIcon className="h-5 w-5" /> : <MenuIcon className="h-5 w-5" />}
-            </Button>
-          </div>
-        </div>
+        <button
+          type="button"
+          className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-[#d2dacf] text-[#193026] md:hidden"
+          aria-label={menuOpen ? "Close menu" : "Open menu"}
+          aria-expanded={menuOpen}
+          aria-controls="mobile-navigation"
+          onClick={() => setMenuOpen((open) => !open)}
+        >
+          {menuOpen ? <X aria-hidden="true" className="h-5 w-5" /> : <Menu aria-hidden="true" className="h-5 w-5" />}
+        </button>
       </div>
 
-      {/* Mobile Navigation Menu */}
-      {mobileMenuOpen && (
-        <div className="md:hidden bg-background/95 backdrop-blur-md">
-          <div className="px-2 pt-2 pb-3 space-y-1">
+      {menuOpen && (
+        <nav id="mobile-navigation" aria-label="Mobile navigation" className="border-t border-[#d9ded4] px-5 py-4 md:hidden">
+          <div className="mx-auto flex max-w-7xl flex-col gap-1">
             {navItems.map((item) => (
               <a
-                key={item.name}
+                key={item.href}
                 href={item.href}
-                className="block px-3 py-2 text-base font-medium hover:text-primary transition-colors"
-                onClick={() => setMobileMenuOpen(false)}
+                className="rounded-lg px-3 py-3 text-sm text-[#53635a] hover:bg-white hover:text-[#087f5b]"
+                onClick={() => setMenuOpen(false)}
               >
-                {item.name}
+                {item.label}
               </a>
             ))}
           </div>
-        </div>
+        </nav>
       )}
     </header>
   )
 }
-

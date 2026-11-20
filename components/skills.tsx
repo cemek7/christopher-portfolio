@@ -1,125 +1,55 @@
-"use client"
+import { ArrowUpRight } from "lucide-react"
 
-import { motion } from "framer-motion"
-import { Card } from "@/components/ui/card"
-import { MonitorIcon, ServerIcon, ShieldIcon, NetworkIcon, CloudIcon } from "lucide-react"
-
-const skillCategories = [
+const capabilities = [
   {
-    title: "Frontend",
-    icon: <MonitorIcon className="h-6 w-6" />,
-    skills: ["React.js", "HTML", "CSS", "Redux", "JavaScript (ES6+)"],
+    number: "01",
+    title: "Applied AI",
+    body: "Assistants grounded in a business’s services and rules. They can clarify missing details, use shared model routes and pass sensitive decisions to a person.",
   },
   {
-    title: "Backend",
-    icon: <ServerIcon className="h-6 w-6" />,
-    skills: ["Node.js", "Python", "RESTful APIs"],
+    number: "02",
+    title: "Customer messaging",
+    body: "WhatsApp and Instagram integrations that connect incoming messages, media, customer context and staff follow-up.",
   },
   {
-    title: "Cybersecurity",
-    icon: <ShieldIcon className="h-6 w-6" />,
-    skills: ["CEH", "Security+", "Network Security", "Firewalls"],
+    number: "03",
+    title: "Booking and commerce",
+    body: "Appointment flows, storefront sales, inventory reservations and operational views designed to work together.",
   },
   {
-    title: "Networking",
-    icon: <NetworkIcon className="h-6 w-6" />,
-    skills: ["CCNA (Cisco Certified Network Associate)"],
-  },
-  {
-    title: "DevOps & Infrastructure",
-    icon: <CloudIcon className="h-6 w-6" />,
-    skills: ["Microsoft 365 Integration", "System Automation", "Cloud Solutions"],
+    number: "04",
+    title: "Production engineering",
+    body: "Tenant-aware APIs, database changes, deployment workflows and diagnostics that make product behaviour easier to trust.",
   },
 ]
 
 export default function Skills() {
-  const container = {
-    hidden: { opacity: 0 },
-    show: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-      },
-    },
-  }
-
-  const item = {
-    hidden: { opacity: 0, y: 20 },
-    show: { opacity: 1, y: 0 },
-  }
-
   return (
-    <section id="skills" className="py-16 md:py-24 bg-secondary/30">
-      <div className="section-container">
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="section-title"
-        >
-          Skills & Expertise
-        </motion.h2>
-
-        <motion.div
-          variants={container}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
-        >
-          {skillCategories.map((category, index) => (
-            <motion.div key={index} variants={item}>
-              <Card className="glass-card p-6 h-full limelight">
-                <div className="flex items-center mb-4">
-                  <div className="p-2 rounded-full bg-primary/10 mr-3">{category.icon}</div>
-                  <h3 className="text-xl font-semibold">{category.title}</h3>
-                </div>
-                <ul className="space-y-2">
-                  {category.skills.map((skill, skillIndex) => (
-                    <li key={skillIndex} className="flex items-center">
-                      <div className="w-2 h-2 rounded-full bg-primary mr-2"></div>
-                      <span>{skill}</span>
-                    </li>
-                  ))}
-                </ul>
-              </Card>
-            </motion.div>
-          ))}
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.6 }}
-          className="mt-12"
-        >
-          <div className="glass-card p-8">
-            <h3 className="text-xl font-semibold mb-4 text-center">Technical Proficiency</h3>
-            <div className="space-y-4">
-              {[
-                { name: "JavaScript & React", level: 95 },
-                { name: "Node.js & Express", level: 90 },
-                { name: "Python", level: 85 },
-                { name: "Cybersecurity", level: 90 },
-                { name: "Networking", level: 85 },
-              ].map((skill, index) => (
-                <div key={index}>
-                  <div className="flex justify-between mb-1">
-                    <span>{skill.name}</span>
-                    <span>{skill.level}%</span>
-                  </div>
-                  <div className="w-full bg-secondary rounded-full h-2.5">
-                    <div className="bg-primary h-2.5 rounded-full" style={{ width: `${skill.level}%` }}></div>
-                  </div>
-                </div>
-              ))}
-            </div>
+    <section id="capabilities" className="bg-[#13221b] text-[#f4f3eb]">
+      <div className="section-container py-20 md:py-28">
+        <div className="grid grid-cols-1 gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:gap-20">
+          <div>
+            <p className="eyebrow text-[#9dc6ad]">What I build with TechClave</p>
+            <h2 className="section-heading mt-4 max-w-lg text-[#f4f3eb]">AI that fits the work around it.</h2>
+            <p className="mt-5 max-w-md leading-7 text-[#c1cec4]">
+              The model is one part. The product needs the right context, data, rules and human handoff around it.
+            </p>
+            <a href="#contact" className="mt-8 inline-flex items-center gap-2 text-sm font-medium text-[#a5e0bd] transition-colors hover:text-white">
+              Talk through a workflow <ArrowUpRight aria-hidden="true" className="h-4 w-4" />
+            </a>
           </div>
-        </motion.div>
+
+          <div className="divide-y divide-white/15 border-y border-white/15">
+            {capabilities.map((item) => (
+              <article key={item.number} className="grid grid-cols-1 gap-3 py-6 sm:grid-cols-[3rem_0.75fr_1.25fr] sm:gap-5 md:py-7">
+                <span className="font-mono text-xs tracking-[0.16em] text-[#9dc6ad]">{item.number}</span>
+                <h3 className="text-lg font-medium tracking-tight">{item.title}</h3>
+                <p className="max-w-xl text-sm leading-6 text-[#c1cec4]">{item.body}</p>
+              </article>
+            ))}
+          </div>
+        </div>
       </div>
     </section>
   )
 }
-

@@ -1,171 +1,98 @@
-"use client"
+import Image from "next/image"
+import { ArrowUpRight } from "lucide-react"
 
-import { useState } from "react"
-import { motion } from "framer-motion"
-import { Card } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
-import { ExternalLinkIcon, GithubIcon, CodeIcon, HomeIcon, FileTextIcon, ShieldIcon } from "lucide-react"
-
-const projects = [
+const earlierWork = [
   {
-    title: "Rental Property Management App",
-    company: "Belsoft Systems",
-    description:
-      "A comprehensive web application for managing rental properties, including tenant management, payment tracking, and maintenance requests.",
-    image: "https://picsum.photos/600/400?grayscale&random=1",
-    technologies: ["React.js", "Node.js", "MongoDB", "Express"],
-    category: "web",
-    links: {
-      demo: "#",
-      github: "#",
-    },
-    icon: <HomeIcon className="h-10 w-10" />,
+    number: "02",
+    title: "Rental property management platform",
+    summary: "A web application for tenant records, rent tracking and maintenance requests.",
+    tools: "React · Node.js · Express · MongoDB",
   },
   {
-    title: "Electronic Document Management System (EDMS)",
-    company: "Brentex Petroleum",
-    description:
-      "A secure document management system for storing, organizing, and retrieving company documents with role-based access control.",
-    image: "https://picsum.photos/600/400?grayscale&random=3",
-    technologies: ["Python", "Django", "PostgreSQL", "AWS S3"],
-    category: "web",
-    links: {
-      demo: "#",
-      github: "#",
-    },
-    icon: <FileTextIcon className="h-10 w-10" />,
+    number: "03",
+    title: "Document management for an energy business",
+    summary: "A role-based system for storing, organising and finding company documents.",
+    tools: "Django · PostgreSQL · AWS S3",
   },
   {
-    title: "Automated Inventory Management System",
-    company: "Freelance Project",
-    description:
-      "An automated system for tracking inventory levels, orders, and deliveries with real-time alerts and reporting.",
-    image: "https://picsum.photos/600/400?grayscale&random=2",
-    technologies: ["Python", "Flask", "SQLite", "React"],
-    category: "automation",
-    links: {
-      demo: "#",
-      github: "#",
-    },
-    icon: <CodeIcon className="h-10 w-10" />,
-  },
-  {
-    title: "Website Security Upgrade & UI Development",
-    company: "Wellman & Wellington",
-    description:
-      "Enhanced website security and implemented modern UI features for improved user experience and protection against common web vulnerabilities.",
-    image: "https://picsum.photos/600/400?grayscale&random=4",
-    technologies: ["JavaScript", "React", "CSS3"],
-    category: "security",
-    links: {
-      demo: "#",
-      github: "#",
-    },
-    icon: <ShieldIcon className="h-10 w-10" />,
+    number: "04",
+    title: "Inventory and operations automation",
+    summary: "Python tools that reduced manual inventory tracking and routine systems work.",
+    tools: "Python · Flask · SQLite",
   },
 ]
 
 export default function Portfolio() {
-  const [filter, setFilter] = useState("all")
-
-  const filteredProjects = filter === "all" ? projects : projects.filter((project) => project.category === filter)
-
   return (
-    <section id="portfolio" className="py-16 md:py-24">
-      <div className="section-container">
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="section-title"
-        >
-          Portfolio & Projects
-        </motion.h2>
-
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-          className="flex justify-center mb-8"
-        >
-          <div className="flex flex-wrap gap-2 justify-center">
-            <Button variant={filter === "all" ? "default" : "outline"} onClick={() => setFilter("all")}>
-              All Projects
-            </Button>
-            <Button variant={filter === "web" ? "default" : "outline"} onClick={() => setFilter("web")}>
-              Web Applications
-            </Button>
-            <Button variant={filter === "automation" ? "default" : "outline"} onClick={() => setFilter("automation")}>
-              Automation
-            </Button>
-            <Button variant={filter === "security" ? "default" : "outline"} onClick={() => setFilter("security")}>
-              Security
-            </Button>
+    <section id="work" className="bg-[#fbfaf6]">
+      <div className="section-container py-20 md:py-28">
+        <div className="mb-10 flex flex-col justify-between gap-4 md:flex-row md:items-end">
+          <div>
+            <p className="eyebrow">Selected work <span className="mx-2 text-[#9ca69b]">/</span> 01—04</p>
+            <h2 className="section-heading mt-4 max-w-2xl">Software built around what people need to do.</h2>
           </div>
-        </motion.div>
+          <a href="mailto:ccemeka97@gmail.com?subject=Product%20engineering%20conversation" className="text-link w-fit">
+            Discuss a project <ArrowUpRight aria-hidden="true" className="h-4 w-4" />
+          </a>
+        </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {filteredProjects.map((project, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-            >
-              <Card className="glass-card overflow-hidden h-full limelight">
-                <div className="relative h-48 overflow-hidden">
-                  <img
-                    src={project.image || "https://picsum.photos/600/400?grayscale&random=1"  || "https://picsum.photos/600/400?grayscale&random=2"}
-                    alt={project.title}
-                    className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-background to-transparent"></div>
-                  <div className="absolute bottom-4 left-4">
-                    <span className="px-3 py-1 bg-primary text-primary-foreground text-sm rounded-full">
-                      {project.company}
-                    </span>
-                  </div>
-                </div>
-                <div className="p-6">
-                  <div className="flex items-center mb-4">
-                    <div className="p-2 rounded-full bg-primary/10 mr-3">{project.icon}</div>
-                    <h3 className="text-xl font-semibold">{project.title}</h3>
-                  </div>
-                  <p className="mb-4 text-muted-foreground">{project.description}</p>
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    {project.technologies.map((tech, techIndex) => (
-                      <span
-                        key={techIndex}
-                        className="px-3 py-1 bg-secondary text-secondary-foreground text-sm rounded-full"
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-                  <div className="flex gap-3">
-                    <Button variant="outline" size="sm" asChild>
-                      <a href={project.links.demo} target="_blank" rel="noopener noreferrer">
-                        <ExternalLinkIcon className="h-4 w-4 mr-2" />
-                        Live Demo
-                      </a>
-                    </Button>
-                    <Button variant="outline" size="sm" asChild>
-                      <a href={project.links.github} target="_blank" rel="noopener noreferrer">
-                        <GithubIcon className="h-4 w-4 mr-2" />
-                        Code
-                      </a>
-                    </Button>
-                  </div>
-                </div>
-              </Card>
-            </motion.div>
+        <article className="grid grid-cols-1 overflow-hidden rounded-[1.5rem] border border-[#d9ded4] bg-[#f2f6ef] lg:grid-cols-[0.9fr_1.1fr]">
+          <div className="flex flex-col justify-between p-7 md:p-10 lg:p-12">
+            <div>
+              <p className="eyebrow text-[#087f5b]">01 <span className="mx-2 text-[#9ca69b]">/</span> TechClave · Product engineering</p>
+              <h3 className="mt-6 max-w-xl text-4xl font-semibold leading-[1.03] tracking-[-0.045em] text-[#13221b] md:text-5xl">
+                Booka gives every enquiry a useful next step.
+              </h3>
+              <p className="mt-5 max-w-xl text-base leading-7 text-[#53635a]">
+                A multi-tenant booking and commerce platform that brings WhatsApp and Instagram enquiries, AI-assisted replies, appointments and inventory into one operating flow.
+              </p>
+              <ul className="mt-7 space-y-3 text-sm leading-6 text-[#35483d]">
+                <li className="flex gap-3"><span className="text-[#087f5b]">↗</span><span>Messages route to the right business inbox and stay attached to the conversation.</span></li>
+                <li className="flex gap-3"><span className="text-[#087f5b]">↗</span><span>AI uses business context and rules, with a path to ask for details or hand off.</span></li>
+                <li className="flex gap-3"><span className="text-[#087f5b]">↗</span><span>Bookings and sales connect to stock checks, reservations and follow-up.</span></li>
+              </ul>
+            </div>
+            <div className="mt-9 flex flex-wrap items-center gap-4">
+              <a href="https://app.techclave.cloud/booka" target="_blank" rel="noreferrer" className="button-primary">
+                Visit Booka <ArrowUpRight aria-hidden="true" className="h-4 w-4" />
+              </a>
+              <span className="font-mono text-xs uppercase tracking-[0.15em] text-[#66766b]">WhatsApp · Instagram · AI</span>
+            </div>
+          </div>
+
+          <a
+            href="https://app.techclave.cloud/booka"
+            target="_blank"
+            rel="noreferrer"
+            className="group relative min-h-[340px] overflow-hidden border-t border-[#d9ded4] bg-white lg:min-h-[600px] lg:border-l lg:border-t-0"
+            aria-label="Open the Booka product page"
+          >
+            <Image
+              src="/booka-product-preview.png"
+              alt="Booka product page showing a customer messaging and booking workflow"
+              fill
+              sizes="(max-width: 1024px) 100vw, 56vw"
+              className="object-cover object-top transition-transform duration-700 group-hover:scale-[1.025]"
+            />
+            <span className="absolute bottom-5 right-5 inline-flex items-center gap-2 rounded-full border border-white/70 bg-[#f4f3eb]/95 px-4 py-2 text-xs font-medium text-[#193026] shadow-sm">
+              Product view <ArrowUpRight aria-hidden="true" className="h-3.5 w-3.5" />
+            </span>
+          </a>
+        </article>
+
+        <div className="mt-5 grid grid-cols-1 gap-5 md:grid-cols-2">
+          {earlierWork.map((project) => (
+            <article key={project.number} className="grid grid-cols-[3rem_1fr] gap-4 border-t border-[#d9ded4] py-6 md:gap-6 md:py-8">
+              <span className="font-mono text-xs tracking-[0.15em] text-[#087f5b]">{project.number}</span>
+              <div>
+                <h3 className="text-xl font-medium tracking-tight text-[#193026]">{project.title}</h3>
+                <p className="mt-2 max-w-xl text-sm leading-6 text-[#5a6a60]">{project.summary}</p>
+                <p className="mt-3 font-mono text-[0.68rem] uppercase tracking-[0.12em] text-[#7b897f]">{project.tools}</p>
+              </div>
+            </article>
           ))}
         </div>
       </div>
     </section>
   )
 }
-

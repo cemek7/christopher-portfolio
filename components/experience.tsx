@@ -1,109 +1,51 @@
-"use client"
-
-import { motion } from "framer-motion"
-import { Card } from "@/components/ui/card"
-import { BriefcaseIcon, CalendarIcon } from "lucide-react"
-
-const experiences = [
+const roles = [
   {
+    period: "Current product work",
+    company: "TechClave",
+    title: "Product engineering",
+    summary: "Building Booka and AI-enabled workflows for customer messaging, booking and commerce.",
+  },
+  {
+    period: "2023 — Present",
     company: "Belsoft Systems",
-    period: "2023 - Present",
     title: "Product Development Lead",
-    description: [
-      "Spearheaded rental property management app development",
-      "Led a team of developers in agile methodologies",
-      "Built strategies to attract foreign investors",
-      "Improved workflow efficiency with modern web technologies",
-    ],
+    summary: "Led a team building a rental property management app, moving tenant, rent and maintenance workflows into production software.",
   },
   {
+    period: "2022 — 2023",
     company: "Brentex Petroleum",
-    period: "2022 - 2023",
     title: "IT Officer",
-    description: [
-      "Migrated entire company email system to Microsoft 365",
-      "Developed a company-wide IT policy and improved network security",
-      "Automated routine system maintenance tasks",
-    ],
+    summary: "Handled Microsoft 365 migration, IT policy, network security and routine systems automation.",
   },
   {
-    company: "Wellman & Wellington",
-    period: "2021",
-    title: "Frontend Developer (Remote)",
-    description: [
-      "Upgraded company website security and implemented new UI features",
-      "Developed wireframes and production-ready UI code",
-    ],
-  },
-  {
-    company: "Freelance",
-    period: "2019 - 2022",
-    title: "Python Developer",
-    description: [
-      "Built an in-house inventory management automation system",
-      "Developed security monitoring scripts for network intrusion detection",
-    ],
+    period: "Earlier work",
+    company: "Wellman & Wellington · Independent",
+    title: "Frontend and Python development",
+    summary: "Delivered website improvements, inventory automation and security-focused tools.",
   },
 ]
 
 export default function Experience() {
   return (
-    <section id="experience" className="py-16 md:py-24">
-      <div className="section-container">
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="section-title"
-        >
-          Experience & Work History
-        </motion.h2>
-
-        <div className="relative">
-          {/* Timeline line */}
-          <div className="absolute left-0 md:left-1/2 transform md:-translate-x-1/2 h-full w-1 bg-border"></div>
-
-          <div className="space-y-12">
-            {experiences.map((exp, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className={`relative flex flex-col ${
-                  index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
-                } md:items-center`}
-              >
-                {/* Timeline dot */}
-                <div className="absolute left-0 md:left-1/2 transform -translate-x-1/2 w-4 h-4 rounded-full bg-primary"></div>
-
-                {/* Date */}
-                <div className="md:w-1/2 mb-4 md:mb-0 flex items-center">
-                  <div className={`glass-card p-4 inline-flex items-center ${index % 2 === 0 ? "md:mr-8" : "md:ml-8"}`}>
-                    <CalendarIcon className="h-5 w-5 mr-2 text-primary" />
-                    <span>{exp.period}</span>
+    <section id="experience" className="bg-[#fbfaf6]">
+      <div className="section-container py-20 md:py-28">
+        <div className="grid grid-cols-1 gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:gap-20">
+          <div>
+            <p className="eyebrow">Experience</p>
+            <h2 className="section-heading mt-4 max-w-md">Product thinking, engineering depth.</h2>
+          </div>
+          <div className="divide-y divide-[#d9ded4] border-y border-[#d9ded4]">
+            {roles.map((role) => (
+              <article key={role.company} className="grid grid-cols-1 gap-2 py-5 sm:grid-cols-[10rem_1fr] sm:gap-6 md:py-6">
+                <p className="font-mono text-[0.68rem] uppercase tracking-[0.12em] text-[#77877b]">{role.period}</p>
+                <div>
+                  <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
+                    <h3 className="text-lg font-medium tracking-tight text-[#193026]">{role.company}</h3>
+                    <p className="text-sm text-[#087f5b]">{role.title}</p>
                   </div>
+                  <p className="mt-2 max-w-2xl text-sm leading-6 text-[#5a6a60]">{role.summary}</p>
                 </div>
-
-                {/* Content */}
-                <Card className={`glass-card p-6 md:w-1/2 limelight ${index % 2 === 0 ? "md:ml-8" : "md:mr-8"}`}>
-                  <div className="flex items-center mb-4">
-                    <BriefcaseIcon className="h-5 w-5 mr-2 text-primary" />
-                    <h3 className="text-xl font-semibold">{exp.company}</h3>
-                  </div>
-                  <h4 className="text-lg font-medium mb-3 text-muted-foreground">{exp.title}</h4>
-                  <ul className="space-y-2">
-                    {exp.description.map((item, i) => (
-                      <li key={i} className="flex items-start">
-                        <div className="w-1.5 h-1.5 rounded-full bg-primary mt-1.5 mr-2"></div>
-                        <span>{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </Card>
-              </motion.div>
+              </article>
             ))}
           </div>
         </div>
@@ -111,4 +53,3 @@ export default function Experience() {
     </section>
   )
 }
-

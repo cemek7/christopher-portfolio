@@ -1,108 +1,41 @@
-"use client"
-
-import { motion } from "framer-motion"
-import { Card } from "@/components/ui/card"
-import { CodeIcon, ShieldIcon, UsersIcon, GraduationCapIcon } from "lucide-react"
+import { ArrowUpRight } from "lucide-react"
 
 export default function About() {
   return (
-    <section id="about" className="py-16 md:py-24">
-      <div className="section-container">
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="section-title"
-        >
-          About Me
-        </motion.h2>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-          >
-            <h3 className="text-2xl font-bold mb-4">Professional Summary</h3>
-            <p className="mb-4">
-              With over 8 years of experience in Full-Stack Development, I've built a career focused on creating
-              efficient, secure, and user-friendly web applications.
-            </p>
-            <p className="mb-4">
-              Currently, I serve as the <strong>Product Development Lead at Belsoft Systems</strong>, where I lead the
-              development of web applications, manage teams, and work with international investors to bring innovative
-              solutions to market.
-            </p>
-            <p className="mb-4">
-              My expertise spans <strong>React.js, Node.js, Python, Cybersecurity, and Network Security</strong>. I've
-              developed an Electronic Document Management System (EDMS) and automated inventory management systems using
-              Python.
-            </p>
-            <p>
-              I hold a <strong>BSc in Computer Science from Ghana Technology University College</strong>, which has
-              provided me with a solid foundation for my technical career.
-            </p>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.4 }}
-            className="grid grid-cols-1 sm:grid-cols-2 gap-6"
-          >
-            <Card className="glass-card p-6 limelight">
-              <div className="flex flex-col items-center text-center">
-                <CodeIcon className="h-10 w-10 mb-4 text-primary" />
-                <h3 className="text-xl font-semibold mb-2">Development</h3>
-                <p className="text-muted-foreground">Full-stack development with React.js, Node.js, and Python</p>
-              </div>
-            </Card>
-
-            <Card className="glass-card p-6 limelight">
-              <div className="flex flex-col items-center text-center">
-                <ShieldIcon className="h-10 w-10 mb-4 text-primary" />
-                <h3 className="text-xl font-semibold mb-2">Cybersecurity</h3>
-                <p className="text-muted-foreground">Network security, ethical hacking, and system protection</p>
-              </div>
-            </Card>
-
-            <Card className="glass-card p-6 limelight">
-              <div className="flex flex-col items-center text-center">
-                <UsersIcon className="h-10 w-10 mb-4 text-primary" />
-                <h3 className="text-xl font-semibold mb-2">Leadership</h3>
-                <p className="text-muted-foreground">Team management and agile development methodologies</p>
-              </div>
-            </Card>
-
-            <Card className="glass-card p-6 limelight">
-              <div className="flex flex-col items-center text-center">
-                <GraduationCapIcon className="h-10 w-10 mb-4 text-primary" />
-                <h3 className="text-xl font-semibold mb-2">Education</h3>
-                <p className="text-muted-foreground">BSc in Computer Science and multiple technical certifications</p>
-              </div>
-            </Card>
-          </motion.div>
+    <section id="about" className="bg-[#f4f3eb]">
+      <div className="section-container grid grid-cols-1 gap-10 py-20 md:py-28 lg:grid-cols-[0.8fr_1.2fr] lg:gap-20">
+        <div>
+          <p className="eyebrow">A little about how I work</p>
+          <h2 className="section-heading mt-4 max-w-md">Start with the real workflow.</h2>
         </div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.6 }}
-          className="mt-12"
-        >
-          <h3 className="text-2xl font-bold mb-4">Interests</h3>
-          <div className="flex flex-wrap gap-4">
-            <span className="px-4 py-2 bg-primary/10 rounded-full text-primary">Gaming</span>
-            <span className="px-4 py-2 bg-primary/10 rounded-full text-primary">Web & Network Security</span>
-            <span className="px-4 py-2 bg-primary/10 rounded-full text-primary">AI & Automation</span>
+        <div className="max-w-3xl">
+          <p className="text-xl leading-8 tracking-[-0.02em] text-[#253a2e] md:text-2xl md:leading-9">
+            I’m a product development lead and full-stack engineer. I work from the customer problem through the data model, interface and production support.
+          </p>
+          <p className="mt-5 max-w-2xl leading-7 text-[#5a6a60]">
+            At TechClave, I focus on practical AI and business software: systems that understand the context, handle routine work and make it clear when a person should step in.
+          </p>
+          <div className="mt-9 grid gap-5 border-t border-[#d9ded4] pt-6 sm:grid-cols-2">
+            <div>
+              <p className="eyebrow">Education</p>
+              <p className="mt-2 font-medium text-[#193026]">BSc, Computer Science</p>
+              <p className="mt-1 text-sm text-[#66766b]">Ghana Technology University College</p>
+            </div>
+            <div>
+              <p className="eyebrow">Earlier work</p>
+              <p className="mt-2 font-medium text-[#193026]">Security, systems and automation</p>
+              <p className="mt-1 text-sm text-[#66766b]">Belsoft Systems · Brentex Petroleum · Wellman & Wellington</p>
+            </div>
+            <div className="sm:col-span-2">
+              <p className="eyebrow">Certifications</p>
+              <p className="mt-2 text-sm text-[#53635a]">Certified Ethical Hacker · CompTIA Security+ · Cisco CCNA (2021)</p>
+            </div>
           </div>
-        </motion.div>
+          <a href="https://github.com/cemek7" target="_blank" rel="noreferrer" className="text-link mt-8">
+            See my code on GitHub <ArrowUpRight aria-hidden="true" className="h-4 w-4" />
+          </a>
+        </div>
       </div>
     </section>
   )
 }
-
